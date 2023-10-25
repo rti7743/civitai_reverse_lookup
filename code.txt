@@ -1,0 +1,52 @@
+このコードはAIで自動生成しました。
+
+test:
+https://civitai.com/api/v1/model-versions/181484
+-> modelId":161254
+
+civitai reverse lookup
+
+https://civitai.com/api/v1/model-versions/181484
+
+
+prompt1:
+エンジニアとして、HTMLフォームをhtmlとjavascriptとcssで作ってください。
+画面には、URLを入力する欄と、実行のためのボタンが必要です。
+ページのタイトルは、civitai reverse lookup としてください。
+
+フォームにから、ユーザが URLを入力します。
+URLは、 "https://civitai.com/api/v1/model-versions/181484" のような形式が入力されます。
+この 181484の部分がIDです。IDは10進数の整数です。
+このIDを取得したら、 ajaxでAPI "https://civitai.com/api/v1/model-versions/:ID" にアクセスしてください。
+":ID"の部分には、先ほど取得したIDを代入してください。
+IDを取得できなかったら、エラーを赤字で画面に表示してください。
+
+結果がjsonで返ってくるので、modelIdの値を取得してください。
+modelIdも10進数の整数です。
+もし、modelIdが取得できなかったら、エラーを赤字で画面に表示してください。
+
+modelIdを取得したら、そのmodelIdを "https://civitai.com/models/:modelId/" として組み立ててください。
+":modelId"の部分に、取得したmodelIdが代入します。
+そして、そのURLをaタグを利用したリンクとして画面に表示してください。
+ユーザーがそれをクリックすると、新しいウィンドウで表示してください。
+
+
+prompt2:
+いいですね。
+ただ、画面が少しシンプルすぎて寂しいです。
+ページの中央に、civitai reverse lookup という名前を表示してください。
+URLは少し長くなるので、テキストボックスはもっと広くとる必要があります。
+プレースホルダで例が記載されていると、より分かりやすいと思います。
+もっとユーザーが使いやすいように、UIを改良してください。
+
+
+prompt3:
+英語圏の方も使うと思いますので、エラーメッセージを英語にしてください。
+
+
+
+prompt4:
+すばらしい。
+ただ、サイトの説明文を入れるのを忘れていました。
+civitaiのダウンロードURLから、モデルデータのURLに変換します。という趣旨の内容を英語で記載してください。
+場所はタイトルとテキストボックスの間に入れてください。

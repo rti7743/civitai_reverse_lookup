@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>civitai reverse lookup</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #description {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        #urlForm {
+            margin-bottom: 20px;
+        }
+        #urlInput {
+            width: 500px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>civitai reverse lookup</h1>
+    <p id="description">This tool converts a civitai download URL into a URL for model data.</p>
+    <form id="urlForm">
+        <input type="text" id="urlInput" placeholder="ExampleFhttps://civitai.com/api/v1/model-versions/181484">
+        <button type="submit">Execute</button>
+    </form>
+    <div id="error" class="error"></div>
+    <div id="result"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $('#urlForm').on('submit', function(e) {
+            e.preventDefault();
+            $('#error').text('');
+            $('#result').text('');
+            var url = $('#urlInput').val();
+            var id = url.split('/').pop();
+            if (isNaN(id)) {
+                $('#error').text('Failed to retrieve the ID');
+                return;
+            }
+            $.ajax({
+                url: 'https://civitai.com/api/v1/model-versions/' + id,
+                success: function(data) {
+                    var modelId = data.modelId;
+                    if (isNaN(modelId)) {
+                        $('#error').text('Failed to retrieve the modelId');
+                        return;
+                    }
+                    var link = 'https://civitai.com/models/' + modelId + '/';
+                    $('#result').html('<a href="' + link + '" target="_blank">' + link + '</a>');
+                },
+                error: function() {
+                    $('#error').text('Failed to retrieve data from the API');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
